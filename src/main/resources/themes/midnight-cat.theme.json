@@ -1,0 +1,84 @@
+{
+  "name": "Midnight Cat",
+  "dark": true,
+  "author": "takashi",
+  "editorScheme": "/themes/Midnight Cat.xml",
+
+  "colors": {
+    "midnight.bg.editor": "#25252d",
+    "midnight.bg.ui": "#1f1f26",
+    "midnight.bg.active": "#2b2b34",
+    "midnight.border": "#34343f",
+
+    "midnight.fg": "#e6e9ef",
+    "midnight.fg.muted": "#9aa1b4",
+
+    "midnight.accent.blue": "#89b4fa",
+    "midnight.accent.purple": "#c4b5fd",
+    "midnight.ok": "#8bd5a0",
+    "midnight.warn": "#f5a97f",
+    "midnight.err": "#f38ba8"
+  },
+
+  "ui": {
+    "*": {
+      "background": "midnight.bg.ui",
+      "foreground": "midnight.fg"
+    },
+
+    "Panel.background": "midnight.bg.ui",
+    "Label.foreground": "midnight.fg",
+    "TextField.background": "midnight.bg.active",
+    "TextField.foreground": "midnight.fg",
+    "Tree.background": "midnight.bg.ui",
+    "Tree.foreground": "midnight.fg",
+    "List.background": "midnight.bg.ui",
+    "List.foreground": "midnight.fg",
+    "Table.background": "midnight.bg.ui",
+    "Table.foreground": "midnight.fg",
+
+    "Component.borderColor": "midnight.border",
+    "Component.focusColor": "midnight.accent.blue",
+
+    "Menu.background": "midnight.bg.ui",
+    "Menu.foreground": "midnight.fg",
+
+    "Popup.background": "midnight.bg.active",
+
+    "Button.startBackground": "midnight.bg.active",
+    "Button.endBackground": "midnight.bg.active",
+    "Button.foreground": "midnight.fg",
+
+    "ScrollBar.thumbColor": "midnight.bg.active",
+    "ScrollBar.trackColor": "midnight.bg.ui",
+
+    "ToolWindow.background": "midnight.bg.ui",
+
+    "Editor.background": "midnight.bg.editor",
+
+    "ToolWindow.Header.background": "midnight.bg.ui",
+    "ToolWindow.Header.inactiveBackground": "midnight.bg.ui",
+
+    "SidePanel.background": "midnight.bg.ui",
+    "Tree.selectionBackground": "midnight.bg.active",
+    "Tree.selectionForeground": "midnight.fg",
+
+    "TabbedPane.background": "midnight.bg.ui",
+    "TabbedPane.foreground": "midnight.fg",
+    "TabbedPane.contentAreaColor": "midnight.bg.ui",
+
+
+    "Link.activeForeground": "midnight.accent.blue",
+
+    "ProgressBar.foreground": "midnight.accent.blue",
+
+    "Notification.background": "midnight.bg.active",
+    "Notification.foreground": "midnight.fg",
+
+    "EditorTabs.background": "midnight.bg.ui",
+    "EditorTabs.underlinedTabBackground": "midnight.bg.active",
+    "EditorTabs.underlinedTabForeground": "midnight.fg",
+
+    "StatusBar.borderColor": "midnight.border"
+  }
+}
