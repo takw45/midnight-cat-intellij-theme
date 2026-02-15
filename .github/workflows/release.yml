@@ -1,0 +1,57 @@
+name: Release (VS Code + JetBrains)
+
+on:
+  push:
+    tags:
+      - "v*.*.*"
+
+permissions:
+  contents: write
+
+jobs:
+  build-and-release:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Java
+        uses: actions/setup-java@v4
+        with:
+          distribution: "temurin"
+          java-version: "21"
+          cache: gradle
+
+      - name: Derive version from tag
+        id: ver
+        run: |
+          TAG="${GITHUB_REF_NAME}"
+          VERSION="${TAG#v}"
+          echo "tag=$TAG" >> $GITHUB_OUTPUT
+          echo "version=$VERSION" >> $GITHUB_OUTPUT
+
+      # ---------- JetBrains (.zip) ----------
+      - name: Set Gradle project version to tag
+        run: |
+          echo "version=${{ steps.ver.outputs.version }}" > gradle.properties
+
+      - name: Build JetBrains plugin (.zip)
+        run: ./gradlew clean buildPlugin -x buildSearchableOptions --no-daemon
+
+      - name: Find JetBrains ZIP
+        id: jbzip
+        run: |
+          ZIP_PATH="$(ls -1 build/distributions/*.zip | head -n 1)"
+          echo "path=$ZIP_PATH" >> $GITHUB_OUTPUT
+
+      # ---------- Release ----------
+      - name: Create GitHub Release
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: ${{ steps.ver.outputs.tag }}
+          name: ${{ steps.ver.outputs.tag }}
+          generate_release_notes: true
+          files: |
+            ${{ steps.vsix.outputs.path }}
+            ${{ steps.jbzip.outputs.path }}
